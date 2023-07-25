@@ -1,9 +1,23 @@
 
 export default function SignUpPage(){
     return(
-        <div>
-            <h1>This is the signup page</h1>
-        </div>
+        <main>
+            <div>
+                {/* {Place logo/title card here} */}
+            </div>
+            
+
+            <article>
+
+                <h1> Sign Up </h1>
+
+                {/* Render Sign Up form component */}
+
+            </article>
+            
+
+
+        </main>
     );
     
 }
