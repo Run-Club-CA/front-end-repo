@@ -1,9 +1,22 @@
 
 export default function LoginPage(){
     return(
-        <div>
-            <h1>Login form or sign up form to be rendered here</h1>
-        </div>
+        <main>
+            
+            {/* {Place Logo/Title component here} */}
+
+            <article>
+                <p>
+                    A Social running club in Waverly,
+                    Come join us and enjoy running
+                    at all skill levels!
+                </p>
+
+                {/* Render Login Form Component */}
+
+                <p>Don't have an account? <a href="./SignUpPage.jsx"><strong>Sign Up Here</strong></a> </p>
+            </article>
+        </main>
     );
     
 }
