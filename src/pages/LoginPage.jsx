@@ -14,7 +14,7 @@ export default function LoginPage(){
 
                 {/* Render Login Form Component */}
 
-                <p>Don't have an account? <a href="./SignUpPage.jsx"><strong>Sign Up Here</strong></a> </p>
+                <p>Don't have an account? <a href="./signup"><strong>Sign Up Here</strong></a> </p>
             </article>
         </main>
     );

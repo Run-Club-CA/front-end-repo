@@ -1,3 +1,4 @@
+import SignUpForm from "../components/SignUpForm";
 
 export default function SignUpPage(){
     return(
@@ -11,7 +12,7 @@ export default function SignUpPage(){
 
                 <h1> Sign Up </h1>
 
-                {/* Render Sign Up form component */}
+                <SignUpForm />
 
             </article>
             
