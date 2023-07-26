@@ -22,7 +22,9 @@ export default function SignUpForm(){
                 <input type="text" />
 
                 <label>Password</label>
-                <input type="password" /> 
+                <input type="password" />
+
+                <button type="submit">Create Account</button> 
             </form>
         </div>
         
