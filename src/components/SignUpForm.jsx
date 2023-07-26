@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useLocalStorage } from "react-use";
+import { createUser } from "../services/UserServices";
+
 
 
 
 export default function SignUpForm(){
 
-    const [savedUser, setSavedUser] = useLocalStorage("user", null)
-
+    // Save the state of each input in signUpForm
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -14,18 +14,21 @@ export default function SignUpForm(){
     const [password, setPassword] = useState("");
 
 
-    const handleSubmit = (event) => {
+    // On submit, save the states of each variable into User Object
+    // Send user data to back-end server to be saved into database
+    // If an error occurs catch it and console.log for time being
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const user = {
             firstName: firstName,
             lastName: lastName,
             email: email,
-            userName: userName,
+            username: userName,
             password: password
         }
 
-        setSavedUser(user);
-        console.log(savedUser);
+        // CreateUser function from UserServices.js
+        createUser(user).then(data => console.log(data)).catch(error => {console.log(error)});
 
     }
 

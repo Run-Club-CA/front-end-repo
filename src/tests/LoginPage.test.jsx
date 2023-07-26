@@ -1,3 +1,6 @@
+// Initial test set up - 
+// remove this note with more comprehensive explanation of tests!
+
 // Import render and screen for react testing library
 import {render, screen} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
