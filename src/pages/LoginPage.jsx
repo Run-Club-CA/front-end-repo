@@ -1,3 +1,4 @@
+import { LoginForm } from "../components/LoginForm";
 
 export default function LoginPage(){
     return(
@@ -12,7 +13,7 @@ export default function LoginPage(){
                     at all skill levels!
                 </p>
 
-                {/* Render Login Form Component */}
+                <LoginForm />
 
                 <p>Don't have an account? <a href="./signup"><strong>Sign Up Here</strong></a> </p>
             </article>

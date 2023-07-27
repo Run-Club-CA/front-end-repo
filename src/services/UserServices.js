@@ -17,3 +17,21 @@ export async function createUser(data){
     console.log(json);
     return json
 }
+
+
+// Login Function, takes user input from loginForm
+// Interacts with back-end server by sending data through request, body
+// Receives authentication Token upon success, error message upon failure
+export async function loginUser(data){
+    const response = await fetch(`${api}/users/login`, {
+        method: "POST",
+        headers:{
+            'Content-type':"application/json"
+        },
+        body: JSON.stringify(data)
+    })
+
+    const json = await response.json();
+    console.log(json);
+    return json
+}
