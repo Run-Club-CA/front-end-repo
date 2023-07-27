@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { loginUser } from "../services/UserServices";
+import { useAuth } from "../contexts/AuthContext";
 
 
 export function LoginForm(){
+
+    const {login} = useAuth();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -15,7 +18,7 @@ export function LoginForm(){
             password: password
         }
 
-        loginUser(loginData).then(data => console.log(data)).catch(error => console.log(error));
+        loginUser(loginData).then(data => login(data.token)).catch(error => console.log(error));
     }
 
 
