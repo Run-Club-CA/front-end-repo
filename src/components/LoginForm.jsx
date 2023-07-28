@@ -8,9 +8,6 @@ export function LoginForm(){
 
     const {login} = useAuth();
 
-    
-
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
