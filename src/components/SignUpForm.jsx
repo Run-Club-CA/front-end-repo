@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { createUser } from "../services/UserServices";
+import { useAuth } from "../contexts/AuthContext";
 
 
 
 
 export default function SignUpForm(){
+
+    const {login} =useAuth();
 
     // Save the state of each input in signUpForm
     const [firstName, setFirstName] = useState("");
@@ -28,7 +31,9 @@ export default function SignUpForm(){
         }
 
         // CreateUser function from UserServices.js
-        createUser(user).then(data => console.log(data)).catch(error => {console.log(error)});
+        createUser(user)
+        .then(data => login(data.token))
+        .catch(error => {console.log(error)});
 
     }
 
