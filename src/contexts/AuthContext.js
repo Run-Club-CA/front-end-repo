@@ -6,6 +6,8 @@ import { useLocalStorage } from "react-use";
 // Create authenticated Context
 const AuthContext = createContext();
 
+// AuthProvider gives what is wrapped around the component 
+// Access to the authentication details and functions to login and logout user
 export const AuthProvider = ({children}) => {
     const [user, setUser] = useLocalStorage("user", null);
 
@@ -13,9 +15,14 @@ export const AuthProvider = ({children}) => {
         setUser(data);
     }
 
+    const logout = () => {
+        setUser(null);
+    }
+
     let value = useMemo(() => ({
         user,
-        login
+        login,
+        logout
     }),
     [user]
     );
@@ -24,6 +31,8 @@ export const AuthProvider = ({children}) => {
     
 };
 
+
+// Custom Auth hook, to expose the user, login and logout functions
 export const useAuth = () => {
     return useContext(AuthContext)
 }
