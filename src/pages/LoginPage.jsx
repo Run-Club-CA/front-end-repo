@@ -15,21 +15,25 @@ export default function LoginPage(){
     }, [user]);
 
     return(
-        <main>
+        <main className="flex justify-center flex-col">
             
             {/* {Place Logo/Title component here} */}
 
-            <article>
+            <article className="text-white bg-grey-div mx-auto my-10 w-mobile-width h-mobile-height p-4 rounded-main-div shadow-mobile-shadow">
                 <p>
                     A Social running club in Waverly,
                     Come join us and enjoy running
                     at all skill levels!
                 </p>
-
-                <LoginForm />
-
-                <p>Don't have an account? <a href="./signup"><strong>Sign Up Here</strong></a> </p>
             </article>
+
+            <LoginForm />
+
+            <div className="text-white mx-auto my-10">
+                <p>Don't have an account? <a href="./signup"><strong>Sign Up Here</strong></a> </p>
+            </div>
+                
+            
         </main>
     );
     

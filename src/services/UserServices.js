@@ -1,5 +1,5 @@
 // Use localhost or backend URL for api depending on whats available
-let api = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+const api = "http://localhost:5000";
 
 // CreateUser function, allows user signupForm to interact with
 // backend api/users/signup POST method 
