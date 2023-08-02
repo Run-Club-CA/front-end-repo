@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import SignUpForm from "../components/SignUpForm";
+import UserForm from "../components/UserForm";
 
 export default function SignUpPage(){
 
@@ -27,7 +27,7 @@ export default function SignUpPage(){
 
                 <h1> Sign Up </h1>
 
-                <SignUpForm />
+                <UserForm />
 
             </article>
             
