@@ -27,12 +27,12 @@ export function LoginForm(){
 
     return(
         <div>
-            <form onSubmit={handleChange}>
+            <form onSubmit={handleChange} className="flex flex-col justify-between text-white items-center p-2 gap-y-2">
                 <label>Email: </label>
-                <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-mobile-width p-1 rounded-mobile-form shadow-form-mobile text-black text-center" />
 
                 <label>Password: </label>
-                <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-mobile-width p-1 rounded-mobile-form shadow-form-mobile text-black text-center" />
 
                 <button type="submit">Login</button>
             </form>
