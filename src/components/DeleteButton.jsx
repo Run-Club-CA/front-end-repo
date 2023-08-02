@@ -1,14 +1,13 @@
-import { useNavigate } from "react-router";
+
 import { useAuth } from "../contexts/AuthContext"
 
 export function DeleteButton(){
 
     const {logout} = useAuth();
-    const navigate = useNavigate();
 
     const deleteProfile = () => {
         logout();
-        
+        console.log("User Removed")
     }
 
     return(
