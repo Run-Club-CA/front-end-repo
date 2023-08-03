@@ -14,7 +14,7 @@ export const AuthProvider = ({children}) => {
     const [isTrainer, setIsTrainer] = useLocalStorage("isTrainer", false);
 
     const login = (data) => {
-        setUser(`Bearer ${data.token}`);
+        setUser(data.token);
         setIsTrainer(data.trainer);
         setIsAdmin(data.admin);
     }

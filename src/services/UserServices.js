@@ -53,7 +53,7 @@ export async function getUser(userJWT){
     const response = await fetch(`${api}/users/user`, {
         method: "GET",
         headers:{
-            "Authorization": userJWT
+            "Authorization": `Bearer ${userJWT}`
         }
     }).catch(error => console.log(error))
 
@@ -70,7 +70,7 @@ export async function updateUser(data, userJWT){
     const response = await fetch(`${api}/users/edit-user`, {
         method: "PUT",
         headers:{
-            "Authorization": userJWT,
+            "Authorization": `Bearer ${userJWT}`,
             "Content-type": "application/json"
         },
         body: JSON.stringify(data) 
@@ -87,7 +87,7 @@ export async function removeUserFromDatabase(userJWT){
     const response = await fetch(`${api}/users/delete-account`, {
         method: "DELETE",
         headers:{
-            "Authorization": userJWT
+            "Authorization": `Bearer ${userJWT}`
         }
     }).catch(error => console.log(error));
 

@@ -26,11 +26,6 @@ export default function UserForm(){
             setButtonName("Create Account")
         } else {
             setButtonName("Edit Profile");
-            // Dummy data for testing, will edit with actual logic needed
-            //     setFirstName("test");
-            //     setLastName("user");
-            //     setEmail("testemail@email.com");
-            //     setUserName("testuser");
         }
     }, [buttonName]);
 
