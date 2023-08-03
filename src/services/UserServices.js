@@ -49,15 +49,15 @@ export async function loginUser(data){
 
 // Function to get user details from the database
 // Sends an api request with jwt in the authorization header
-// export async function getUser(userJWT){
-//     const response = await fetch(`${api}/users/user`, {
-//         method: "GET",
-//         headers:{
-//             Authorization: userJWT
-//         }
-//     }).catch(error => console.log(error))
+export async function getUser(userJWT){
+    const response = await fetch(`${api}/users/user`, {
+        method: "GET",
+        headers:{
+            "Authorization": userJWT
+        }
+    }).catch(error => console.log(error))
 
-//     const json = await response.json();
-//     console.log(json);
-//     return json;
-// }
+    const json = await response.json();
+    console.log(json);
+    return json;
+}

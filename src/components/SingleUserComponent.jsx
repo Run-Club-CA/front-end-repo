@@ -12,10 +12,10 @@ export default function SingleUser(){
     if(isAdmin === true){
         return(
             <div className="text-white">
-                {/* <p>{userDetails.firstName}</p>
+                <p>{userDetails.firstName}</p>
                 <p>{userDetails.lastName}</p>
                 <p>{userDetails.email}</p>
-                <p>{userDetails.userName}</p> */}
+                <p>{userDetails.userName}</p>
                 <p>{isTrainer}</p>
             </div> 
         )
