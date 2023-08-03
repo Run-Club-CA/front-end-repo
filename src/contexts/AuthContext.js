@@ -10,9 +10,17 @@ const AuthContext = createContext();
 // Access to the authentication details and functions to login and logout user
 export const AuthProvider = ({children}) => {
     const [user, setUser] = useLocalStorage("user", null);
+    const [isAdmin, setIsAdmin] = useLocalStorage("isAdmin", false);
+    const [isTrainer, setIsTrainer] = useLocalStorage("isTrainer", false);
 
     const login = (data) => {
-        setUser(data);
+        setUser(data.token);
+        setIsTrainer(data.trainer);
+        setIsAdmin(data.admin);
+    }
+
+    const changeStatus = (data) => {
+        setIsTrainer(data);
     }
 
     const logout = () => {
@@ -21,10 +29,13 @@ export const AuthProvider = ({children}) => {
 
     let value = useMemo(() => ({
         user,
+        isAdmin,
+        isTrainer,
         login,
-        logout
+        logout,
+        changeStatus
     }),
-    [user]
+    [user, isTrainer, isAdmin]
     );
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

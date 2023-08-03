@@ -51,7 +51,7 @@ export default function UserForm(){
         // CreateUser function from UserServices.js
         if(location.pathname === "/signup"){
             createUser(user)
-            .then(data => login(data.token))
+            .then(data => login(data))
             .catch(error => {console.log(error)});
             storeUserDetails(user);
         } else {
