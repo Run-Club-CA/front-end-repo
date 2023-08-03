@@ -115,15 +115,19 @@ export default class CreateEvent extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Create New Event</h3>
-        <form onSubmit={this.onSubmit}>
-          <div className="form-group">
+      <div className="flex justify-center flex-col">
+        <form
+          onSubmit={this.onSubmit}
+          className="text-white bg-grey-div mx-auto my-10 w-mobile-width
+         p-4 rounded-main-div shadow-mobile-shadow"
+        >
+          <h3>Create New Event</h3>
+          <div className="form-group ">
             <label>Name: </label>
             <input
               type="text"
               required
-              className="form-control"
+              className="form-control text-black"
               value={this.state.name}
               onChange={this.onChangeName}
             />
@@ -133,14 +137,16 @@ export default class CreateEvent extends Component {
             <input
               type="text"
               required
-              className="form-control"
+              className="form-control text-black"
               value={this.state.location}
               onChange={this.onChangeLocation}
             />
           </div>
           <div className="form-group">
             <div>
+              <label>Date: </label>
               <DatePicker
+                className="form-control text-black"
                 selected={this.state.date}
                 onChange={this.onChangeDate}
                 minDate={this.state.minDate}
@@ -152,11 +158,11 @@ export default class CreateEvent extends Component {
             </div>
           </div>
           <div className="form-group">
-            <label>Distance (in km): </label>
+            <label>Distance (km): </label>
             <input
               type="text"
               required
-              className="form-control"
+              className="form-control text-black"
               value={this.state.distance}
               onChange={this.onChangeDistance}
             />
@@ -166,7 +172,7 @@ export default class CreateEvent extends Component {
             <input
               type="text"
               required
-              className="form-control"
+              className="form-control text-black"
               value={this.state.difficulty}
               onChange={this.onChangeDifficulty}
             />
@@ -176,7 +182,7 @@ export default class CreateEvent extends Component {
             <select
               ref="userInput"
               required
-              className="form-control"
+              className="form-control text-black"
               value={this.state.trainer}
               onChange={this.onChangeTrainer}
             >
