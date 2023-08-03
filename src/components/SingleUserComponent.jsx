@@ -8,7 +8,7 @@ export default function SingleUser(){
     const {userDetails} = useUser();
     const {isTrainer, isAdmin} = useAuth();
     console.log(isAdmin)
-
+    // conditional render, changes layout of page if user is admin or not
     if(isAdmin === true){
         return(
             <div className="text-white">

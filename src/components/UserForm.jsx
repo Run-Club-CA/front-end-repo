@@ -48,7 +48,9 @@ export default function UserForm(){
             password: password || null
         }
 
-        // CreateUser function from UserServices.js
+        // conditional check of location.path
+        // If location is signup, use createUser function to sign up user
+        // If location is profile, use updateUser function to sign up user
         if(location.pathname === "/signup"){
             createUser(userData)
             .then(data => login(data))

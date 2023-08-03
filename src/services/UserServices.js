@@ -80,3 +80,18 @@ export async function updateUser(data, userJWT){
     console.log(json);
     return json
 }
+
+// Function to remove user from database
+// Sends API request with auth header and delete request
+export async function removeUserFromDatabase(userJWT){
+    const response = await fetch(`${api}/users/delete-account`, {
+        method: "DELETE",
+        headers:{
+            "Authorization": userJWT
+        }
+    }).catch(error => console.log(error));
+
+    const json = await response.json();
+    console.log(json)
+    return json
+}

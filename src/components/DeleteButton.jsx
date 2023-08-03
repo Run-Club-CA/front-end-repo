@@ -4,10 +4,11 @@ import { useUser } from "../contexts/UserContext";
 
 export function DeleteButton(){
 
-    const {logout, isAdmin} = useAuth();
+    const {user, logout, isAdmin} = useAuth();
     const { removeUserDetails } = useUser();
 
     const deleteProfile = () => {
+        removeUserDetails(user)
         logout();
         console.log("User Removed")
     }
@@ -19,6 +20,6 @@ export function DeleteButton(){
     }
 
     return(
-        <button onClick={deleteProfile }>Remove Account</button>
+        <button onClick={deleteProfile}>Remove Account</button>
     )
 }
