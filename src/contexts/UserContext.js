@@ -2,21 +2,20 @@ import { createContext, useContext, useMemo } from "react";
 import { useLocalStorage } from "react-use";
 
 
-const UserContext = createContext({});
+const UserContext = createContext();
 
 export const UserProvider = ({children}) => {
     const [firstName, setFirstName] = useLocalStorage("firstName", "");
     const [lastName, setLastName] = useLocalStorage("lastName", "");
     const [userName, setUserName] = useLocalStorage("userName", "");
     const [email, setEmail] = useLocalStorage("email", "");
-    const [isTrainer, setIsTrainer] = useLocalStorage("isTrainer", "");
+    // const [isTrainer, setIsTrainer] = useLocalStorage("isTrainer", "");
 
     const userDetails = {
         firstName: firstName,
         lastName: lastName,
         userName: userName,
         email: email,
-        isTrainer: isTrainer
     }
 
     // Function to store UserDetails in local storage for access
@@ -25,7 +24,6 @@ export const UserProvider = ({children}) => {
         setLastName(data.lastName);
         setUserName(data.username);
         setEmail(data.email);
-        setIsTrainer(data.isTrainer);
     }
 
     // Function to remove userDetails from local storage
@@ -34,7 +32,7 @@ export const UserProvider = ({children}) => {
         setLastName("");
         setUserName("");
         setEmail("");
-        setIsTrainer("");
+        // setIsTrainer("");
     }
 
     let value = useMemo(() => ({
