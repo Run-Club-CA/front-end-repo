@@ -13,7 +13,7 @@ export default function DashBoardComponent(props) {
     // Uses the supplied JWT that relates to the current user
     useEffect(() => {
         console.log(user)
-        getUser("bearer " + user)
+        getUser(user)
         .then(data => storeUserDetails(data))
         .catch(error => console.log(error));
         console.log(userDetails);

@@ -61,3 +61,22 @@ export async function getUser(userJWT){
     console.log(json);
     return json;
 }
+
+// Function to allow user to update user details from front-end component
+// to back-end route
+// Sends API request with authorization header and updated user details
+export async function updateUser(data, userJWT){
+    console.log(userJWT);
+    const response = await fetch(`${api}/users/edit-user`, {
+        method: "PUT",
+        headers:{
+            "Authorization": userJWT,
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(data) 
+    }).catch(error => console.log(error));
+
+    const json = await response.json();
+    console.log(json);
+    return json
+}
