@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import DashBoardComponent from "../components/DashboardComponent";
 import { useUser } from "../contexts/UserContext";
+import CardContainer from "../components/EventsCardContainer";
 
 
 export default function Dashboard(){
@@ -21,6 +22,7 @@ export default function Dashboard(){
     return(
         <>
             <DashBoardComponent />
+            <CardContainer/>
             <main>
                 <Outlet />
             </main>
