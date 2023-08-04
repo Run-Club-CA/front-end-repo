@@ -95,3 +95,19 @@ export async function removeUserFromDatabase(userJWT){
     console.log(json)
     return json
 }
+
+// Admin function to fetch list of users on the database, 
+// Function sends request header of authorization to confirm user is admin
+// Returns array of user objects/documents from database
+export async function getAllUsers(userJWT){
+    const response = await fetch(`${api}/users/all`, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${userJWT}`
+        }
+    }).catch(error => console.log(error));
+
+    const json = await response.json();
+    console.log(json);
+    return json
+}
