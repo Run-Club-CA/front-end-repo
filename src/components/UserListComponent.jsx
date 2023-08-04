@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getAllUsers } from "../services/UserServices";
+import { getAllUsers, removeUser, updateUserStatus } from "../services/UserServices";
 import { useAuth } from "../contexts/AuthContext";
-import { updateUserStatus } from "../services/UserServices";
+
 
 
 export default function UserList(){
@@ -23,7 +23,13 @@ export default function UserList(){
         .then(data => console.log(data))
         .catch(error => console.log(error))
         setUserChange(!userChange);
-        console.log(userChange)
+    }
+
+    const deleteUserAccount = async (username) => {
+        removeUser(username, user)
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+        setUserChange(!userChange);
     }
 
     return(
@@ -34,6 +40,7 @@ export default function UserList(){
                 <p>email: {user.email}</p>
                 <p>isTrainer: {user.isTrainer}</p>
                 <button onClick={() => {changeUserStatus(user.userName)}}>Edit Profile</button>
+                <button onClick={() => {deleteUserAccount(user.userName)}}>Remove Account</button>
                 </div>)}
         </div>
     )
