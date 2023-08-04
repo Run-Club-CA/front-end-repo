@@ -111,3 +111,20 @@ export async function getAllUsers(userJWT){
     console.log(json);
     return json
 }
+
+// Admin function to send request to update users status on database
+// Request sends paramater of userName they wish to update
+// Request also sends Admin JWT as authorization to confirm admin is making request
+// Returns updated AdminJWT and confirmation of user status change
+export async function updateUserStatus(userName, userJWT){
+    const response = await fetch(`${api}/users/admin/edit-status/${userName}`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Bearer ${userJWT}`
+        }
+    }).catch(error => console.log(error));
+
+    const json = await response.json();
+    console.log(json);
+    return json
+}
