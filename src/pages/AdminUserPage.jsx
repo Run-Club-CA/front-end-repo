@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import SingleUser from "../components/SingleUserComponent";
 import { DeleteButton } from "../components/DeleteButton";
-import { ChangeStatus } from "../components/EditUserStatus";
 import { useEffect } from "react";
 
 
@@ -21,7 +20,6 @@ export default function AdminUserPage(){
         <div>
             <p>Checking to see if this page is rendering</p>
             <SingleUser />
-            <ChangeStatus />
             <DeleteButton />
         </div>
     )

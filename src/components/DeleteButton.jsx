@@ -5,7 +5,7 @@ import { removeUserFromDatabase } from "../services/UserServices";
 
 export function DeleteButton(){
 
-    const {user, logout, isAdmin} = useAuth();
+    const {user, logout} = useAuth();
     const { removeUserDetails } = useUser();
 
     // Calls functions to remove user from database and front end
@@ -16,12 +16,6 @@ export function DeleteButton(){
         removeUserDetails()
         logout();
         console.log("User Removed")
-    }
-
-    const removeAccount = () => {
-        // Logic function to make delete request to backend still to be implemented
-        removeUserDetails();
-        console.log("User Removed");
     }
 
     return(

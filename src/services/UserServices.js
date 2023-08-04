@@ -95,3 +95,53 @@ export async function removeUserFromDatabase(userJWT){
     console.log(json)
     return json
 }
+
+// Admin function to fetch list of users on the database, 
+// Function sends request header of authorization to confirm user is admin
+// Returns array of user objects/documents from database
+export async function getAllUsers(userJWT){
+    const response = await fetch(`${api}/users/all`, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${userJWT}`
+        }
+    }).catch(error => console.log(error));
+
+    const json = await response.json();
+    console.log(json);
+    return json
+}
+
+// Admin function to send request to update users status on database
+// Request sends paramater of userName they wish to update
+// Request also sends Admin JWT as authorization to confirm admin is making request
+// Returns updated AdminJWT and confirmation of user status change
+export async function updateUserStatus(userName, userJWT){
+    const response = await fetch(`${api}/users/admin/edit-status/${userName}`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Bearer ${userJWT}`
+        }
+    }).catch(error => console.log(error));
+
+    const json = await response.json();
+    console.log(json);
+    return json
+}
+
+// Admin function to remove user from database
+// Request sends parameter of username within fetch route request
+// Request sends Admin JWT for authorization
+// Returns admin JWT and confirmation of user removal
+export async function removeUser(userName, userJWT){
+    const response = await fetch(`${api}/users/admin/remove-account/${userName}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization" : `Bearer ${userJWT}`
+        }
+    }).catch(error => console.log(error));
+
+    const json = await response.json();
+    console.log(json);
+    return json
+}
