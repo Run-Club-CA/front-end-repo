@@ -49,15 +49,49 @@ export async function loginUser(data){
 
 // Function to get user details from the database
 // Sends an api request with jwt in the authorization header
-// export async function getUser(userJWT){
-//     const response = await fetch(`${api}/users/user`, {
-//         method: "GET",
-//         headers:{
-//             Authorization: userJWT
-//         }
-//     }).catch(error => console.log(error))
+export async function getUser(userJWT){
+    const response = await fetch(`${api}/users/user`, {
+        method: "GET",
+        headers:{
+            "Authorization": `Bearer ${userJWT}`
+        }
+    }).catch(error => console.log(error))
 
-//     const json = await response.json();
-//     console.log(json);
-//     return json;
-// }
+    const json = await response.json();
+    console.log(json);
+    return json;
+}
+
+// Function to allow user to update user details from front-end component
+// to back-end route
+// Sends API request with authorization header and updated user details
+export async function updateUser(data, userJWT){
+    console.log(userJWT);
+    const response = await fetch(`${api}/users/edit-user`, {
+        method: "PUT",
+        headers:{
+            "Authorization": `Bearer ${userJWT}`,
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(data) 
+    }).catch(error => console.log(error));
+
+    const json = await response.json();
+    console.log(json);
+    return json
+}
+
+// Function to remove user from database
+// Sends API request with auth header and delete request
+export async function removeUserFromDatabase(userJWT){
+    const response = await fetch(`${api}/users/delete-account`, {
+        method: "DELETE",
+        headers:{
+            "Authorization": `Bearer ${userJWT}`
+        }
+    }).catch(error => console.log(error));
+
+    const json = await response.json();
+    console.log(json)
+    return json
+}

@@ -20,7 +20,7 @@ export function LoginForm(){
         }
 
         loginUser(loginData)
-        .then(data => login(data.token))
+        .then(data => login(data))
         .catch(error => console.log(error));
     }
 
