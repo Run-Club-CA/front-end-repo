@@ -3,6 +3,7 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { addDays } from "date-fns";
+import { useAuth } from "../contexts/AuthContext";
 
 // Use localhost or backend URL for api depending on whats available
 let api = "";
@@ -105,10 +106,20 @@ export default class CreateEvent extends Component {
 
     console.log(event);
 
+    let token = localStorage.getItem("user")
+    token = JSON.parse(token)
+
+    const config = {
+      headers : {
+        "Authorization" : `Bearer ${token}`
+      }
+    }
+
     axios
-      .post(`${api}/events`, event)
+      .post(`${api}/events`, event, config)
       // .post("http://localhost:5000/events", event)
-      .then((res) => console.log(res.data));
+      .then((res) => console.log(res.data))
+      .catch(error => console.log(error));
 
     window.location = "/";
   }
