@@ -5,6 +5,7 @@ import { registerAttendance, removeAttendance } from "../services/EventServices"
 export default function EventCard(props){
     
     const {isTrainer, isAdmin, user} = useAuth();
+    
 
     let {
         name, location, date, 
@@ -31,7 +32,7 @@ export default function EventCard(props){
         removeAttendance(userJWT, event)
         .then(data => console.log(data))
         .catch(error => console.log(error))
-        toast.success("Event removed")
+        toast.success("attendance removed")
     }
 
 
