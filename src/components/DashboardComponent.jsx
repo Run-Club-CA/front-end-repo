@@ -7,7 +7,7 @@ import { getUser } from "../services/UserServices";
 export default function DashBoardComponent(props) {
 
     const {userDetails, storeUserDetails, removeUserDetails} = useUser();
-    const {user, logout, updateToken, isTrainer, isAdmin} = useAuth();
+    const {user, logout, isTrainer, isAdmin} = useAuth();
 
     // useEffect hook to get user details and store them in local storage
     // Uses the supplied JWT that relates to the current user
@@ -15,7 +15,6 @@ export default function DashBoardComponent(props) {
         console.log(user)
         getUser(user)
         .then(data => storeUserDetails(data))
-        // .then(data => updateToken(data.newToken))
         .catch(error => console.log(error));
         console.log(userDetails);
     }, []);
@@ -29,7 +28,9 @@ export default function DashBoardComponent(props) {
         <div className="text-white bg-grey-div mx-auto my-10 w-mobile-width h-mobile-height p-4 rounded-main-div shadow-mobile-shadow">
             <h1>Welcome! {userDetails.firstName || "Testname"}</h1>
             <a href="/dashboard/profile">Edit Profile</a>
+            <a href="/dashboard">Home</a>
             {(isTrainer || isAdmin) && <a href="/dashboard/events">Create Event</a>}
+            {isAdmin && <a href="/dashboard/admin/users">Users List</a>}
             <button onClick={logoutUser}>Logout</button>
         </div>
     )

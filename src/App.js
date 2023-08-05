@@ -1,5 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import Dashboard from './pages/Dashboard.jsx';
@@ -28,6 +31,7 @@ function App() {
               <Route path='admin/users' element={<UsersListPage />} />
             </Route>
           </Routes>
+          <ToastContainer />
         </BrowserRouter>
       </UserProvider>
     </AuthProvider>

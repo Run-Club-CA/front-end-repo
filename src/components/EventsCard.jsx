@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { useAuth } from "../contexts/AuthContext"
 import { registerAttendance, removeAttendance } from "../services/EventServices";
 
@@ -20,6 +21,7 @@ export default function EventCard(props){
         registerAttendance(userJWT, event)
         .then(data => console.log(data))
         .catch(error => console.log(error))
+        toast.success("Event added");
     }
 
     const handleRemoveAttending = (userJWT, eventID) => {
@@ -29,6 +31,7 @@ export default function EventCard(props){
         removeAttendance(userJWT, event)
         .then(data => console.log(data))
         .catch(error => console.log(error))
+        toast.success("Event removed")
     }
 
 

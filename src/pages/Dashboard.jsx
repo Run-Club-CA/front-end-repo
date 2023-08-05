@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useLocation } from "react-use";
+import { useEffect} from "react";
 import DashBoardComponent from "../components/DashboardComponent";
-import { useUser } from "../contexts/UserContext";
 import CardContainer from "../components/EventsCardContainer";
 
 
@@ -11,6 +11,7 @@ export default function Dashboard(){
     
     const {user} = useAuth();
     const navigate = useNavigate(); 
+    let location = useLocation()
 
     useEffect(() => {
         if (user === null) {
@@ -19,15 +20,28 @@ export default function Dashboard(){
     }, [user]);
 
 
-    return(
-        <>
-            <DashBoardComponent />
-            <CardContainer/>
-            <main>
-                <Outlet />
-            </main>
-        </>
-        
-        
-    )
+    if(location.pathname === "/dashboard/" || location.pathname === "/dashboard"){
+        return(
+            <>
+                <DashBoardComponent />
+                <CardContainer />
+                <main>
+                    <Outlet />
+                </main>
+            </>
+            
+            
+        )
+    } else {
+        return(
+            <>
+                <DashBoardComponent />
+                <main>
+                    <Outlet />
+                </main>
+            </>
+            
+            
+        )
+    }
 }

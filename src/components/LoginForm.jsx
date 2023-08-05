@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { loginUser } from "../services/UserServices";
 import { useAuth } from "../contexts/AuthContext";
-
-
+import { toast } from "react-toastify";
 
 export function LoginForm(){
 
-    const {login} = useAuth();
+    const {user, login} = useAuth();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleChange = (event) => {
+    const handleChange = async (event) => {
         event.preventDefault();
         
         let loginData = {
@@ -21,7 +20,8 @@ export function LoginForm(){
 
         loginUser(loginData)
         .then(data => login(data))
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
+
     }
 
 

@@ -19,10 +19,6 @@ export const AuthProvider = ({children}) => {
         setIsAdmin(data.admin);
     }
 
-    const updateToken = (data) => {
-        setUser(data.token)
-    }
-
     const changeStatus = (data) => {
         setIsTrainer(data);
     }
@@ -36,7 +32,6 @@ export const AuthProvider = ({children}) => {
         isAdmin,
         isTrainer,
         login,
-        updateToken,
         logout,
         changeStatus
     }),

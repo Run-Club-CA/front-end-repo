@@ -41,9 +41,9 @@ export async function loginUser(data){
         },
         body: JSON.stringify(data)
     })
-
+    
     const json = await response.json();
-    console.log(json);
+    console.log(json)
     return json
 }
 
