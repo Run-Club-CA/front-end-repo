@@ -79,3 +79,20 @@ export async function removeAttendance(userJWT, eventID){
     console.log(json);
     return json
 }
+
+
+// Function to remove event from database
+// Sends userJWT and eventID to the server
+// Returns successful deletion message or unsuccessful removal
+export async function deleteEvent(userJWT, eventID){
+    const response = await fetch(`${api}/events/${eventID}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${userJWT}`
+        }
+    }).catch(error => console.log(error))
+
+    const json = await response.json();
+    console.log(json)
+    return json
+}

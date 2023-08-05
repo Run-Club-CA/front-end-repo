@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import { useAuth } from "../contexts/AuthContext"
-import { registerAttendance, removeAttendance } from "../services/EventServices";
+import { deleteEvent, registerAttendance, removeAttendance } from "../services/EventServices";
 
 export default function EventCard(props){
     
@@ -35,6 +35,12 @@ export default function EventCard(props){
         toast.success("attendance removed")
     }
 
+    const removeEvent = (userJWT, eventID) => {
+        deleteEvent(userJWT, eventID)
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+    }
+
 
     if(isTrainer === true || isAdmin === true){
         return(
@@ -46,7 +52,7 @@ export default function EventCard(props){
             <p>Distance: {distance}</p>
             <p>Difficulty: {difficulty}</p>
             <p>Trainer: {trainer}</p>
-            <button>Edit Event</button>
+            <button onClick={() => {removeEvent(user, id)}}>Remove Event</button>
             <button onClick={() => (handleAttending(user, id))}>Attend</button>
             <button onClick={() => (handleRemoveAttending(user, id))}>Remove Attendance</button>
         </div> 
