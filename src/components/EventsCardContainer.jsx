@@ -7,7 +7,6 @@ export default function CardContainer(){
 
     const [eventsList, setEventsList] = useState([]);
     const {user} = useAuth();
-    const [buttonLocation, setButtonLocation] = useState("");
 
     useEffect(() => {
         getEvents()
@@ -19,14 +18,12 @@ export default function CardContainer(){
         getEvents()
         .then(data => setEventsList(data))
         .catch(error => console.log(error))
-        setButtonLocation("upcoming")
     }
 
     const handleAttendingEvents = (userJWT) => {
         getUserEvents(userJWT)
         .then(data => setEventsList(data))
         .catch(error => console.log(error))
-        setButtonLocation("attending")
     }
 
     return(

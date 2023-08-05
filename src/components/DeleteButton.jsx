@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { useAuth } from "../contexts/AuthContext";
 import { useUser } from "../contexts/UserContext";
 import { removeUserFromDatabase } from "../services/UserServices";
@@ -11,11 +12,11 @@ export function DeleteButton(){
     // Calls functions to remove user from database and front end
     const deleteProfile = () => {
         removeUserFromDatabase(user)
-        .then(data => console.log(data))
+        .then(data => (data === "User removed") ? toast.success("User removed") : toast.error("Error occurred"))
         .catch(error => console.log(error));
         removeUserDetails()
         logout();
-        console.log("User Removed")
+        toast.success("User Removed")
     }
 
     return(

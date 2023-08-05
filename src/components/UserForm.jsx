@@ -3,6 +3,7 @@ import { createUser, updateUser } from "../services/UserServices";
 import { useAuth } from "../contexts/AuthContext";
 import { useLocation } from "react-use";
 import { useUser } from "../contexts/UserContext";
+import { toast } from "react-toastify";
 
 
 
@@ -34,29 +35,34 @@ export default function UserForm(){
     // Send user data to back-end server to be saved into database
     // If an error occurs catch it and console.log for time being
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        let userData = {
-            firstName: firstName || userDetails.firstName,
-            lastName: lastName || userDetails.lastName,
-            email: email || userDetails.email,
-            username: userName || userDetails.username,
-            password: password || null
-        }
+        try{
+            event.preventDefault();
+            let userData = {
+                firstName: firstName || userDetails.firstName,
+                lastName: lastName || userDetails.lastName,
+                email: email || userDetails.email,
+                username: userName || userDetails.username,
+                password: password || null
+            }
 
-        // conditional check of location.path
-        // If location is signup, use createUser function to sign up user
-        // If location is profile, use updateUser function to sign up user
-        if(location.pathname === "/signup"){
-            createUser(userData)
-            .then(data => login(data))
-            .catch(error => {console.log(error)});
-            storeUserDetails(userData);
-        } else {
-            updateUser(userData, user)
-            .then(data => login(data))
-            .catch(error => console.log(error));
-            storeUserDetails(userData);
+            // conditional check of location.path
+            // If location is signup, use createUser function to sign up user
+            // If location is profile, use updateUser function to sign up user
+            if(location.pathname === "/signup"){
+                createUser(userData)
+                .then(data => login(data))
+                .catch(error => {console.log(error)});
+                storeUserDetails(userData);
+            } else {
+                updateUser(userData, user)
+                .then(data => login(data))
+                .catch(error => console.log(error));
+                storeUserDetails(userData);
+            }
+        } catch (error) {
+            toast.error("An error has occurred")
         }
+        
     }
 
 

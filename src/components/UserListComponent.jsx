@@ -10,26 +10,27 @@ export default function UserList(){
 
     const [userList, setUserList] = useState([]);
 
-    const [userChange, setUserChange] = useState();
 
     useEffect(() => {
         getAllUsers(user)
         .then(data => setUserList(data))
         .catch(error => console.log(error));
-    }, [userChange]);
+    }, []);
 
     const changeUserStatus = async (username) => {
         updateUserStatus(username, user)
         .then(data => console.log(data))
+        .then(() => getAllUsers(user))
+        .then(data => setUserList(data))
         .catch(error => console.log(error))
-        setUserChange(!userChange);
     }
 
     const deleteUserAccount = async (username) => {
         removeUser(username, user)
         .then(data => console.log(data))
+        .then(() => getAllUsers(user))
+        .then(data => setUserList(data))
         .catch(error => console.log(error))
-        setUserChange(!userChange);
     }
 
     return(

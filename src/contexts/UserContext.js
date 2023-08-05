@@ -46,7 +46,7 @@ export const UserProvider = ({children}) => {
     
 }
 
-// Custom hook to expose userdetails, and store/remove functions
+// Custom hook to expose user details, and store/remove functions
 export const useUser = () => {
     return useContext(UserContext);
 }
