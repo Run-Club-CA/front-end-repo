@@ -49,38 +49,52 @@ export default function EditForm(props) {
 
     return(
         <div>
-            <form name="edit-event" className="text-black" onSubmit={handleSubmit}>
-                <label className="text-white">Name: </label>
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+            <form name="edit-event" className="flex flex-col justify-center items-center gap-y-2 text-black" onSubmit={handleSubmit}>
+                <div>
+                    <label className="text-white">Name: </label>
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                </div>
+                
+                <div>
+                    <label className="text-white">Date: </label>
+                    <ReactDatePicker 
+                        selected={startDate} 
+                        onChange={(date) => setStartDate(date)} 
+                        showTimeSelect
+                        timeIntervals={15}
+                        dateFormat="Pp" 
+                    />
+                </div>
+                
+                <div>
+                    <label className="text-white">Location: </label>
+                    <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
+                </div>
+                
+                <div>
+                    <label className="text-white">Distance: </label>
+                    <input type="text" value={distance} onChange={(e) => setDistance(e.target.value)} />
+                </div>
+                
+                <div>
+                    <label className="text-white">Difficulty: </label>
+                    <input type="text" value={difficulty} onChange={(e) => setDifficulty(e.target.value)}/>
 
-                <label className="text-white">Date: </label>
-                <ReactDatePicker 
-                    selected={startDate} 
-                    onChange={(date) => setStartDate(date)} 
-                    showTimeSelect
-                    timeIntervals={15}
-                    dateFormat="Pp" 
-                />
+                </div>
+                
+                <div>
+                   <label className="text-white">Trainer: </label>
+                    <select 
+                        required
+                        className="text-black"
+                        value={trainer}
+                        onChange={(e) => setTrainer(e.target.value)}
+                    >{trainers.map(trainer => <option key={trainer} value={trainer}>{trainer}</option> )}
+                    </select> 
+                </div>
+                
 
-                <label className="text-white">Location: </label>
-                <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
-
-                <label className="text-white">Distance: </label>
-                <input type="text" value={distance} onChange={(e) => setDistance(e.target.value)} />
-
-                <label className="text-white">Difficulty: </label>
-                <input type="text" value={difficulty} onChange={(e) => setDifficulty(e.target.value)}/>
-
-                <label className="text-white">Trainer: </label>
-                <select 
-                    required
-                    className="text-black"
-                    value={trainer}
-                    onChange={(e) => setTrainer(e.target.value)}
-                >{trainers.map(trainer => <option key={trainer} value={trainer}>{trainer}</option> )}
-                </select>
-
-                <button className="text-white">Submit</button>
+                <button className="mt-2 bg-green-500 hover:bg-green-700 text-white text-center font-bold py-1 px-2 rounded">Submit</button>
             </form>
         </div>
     )
