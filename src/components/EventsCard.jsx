@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext"
-import { deleteEvent, registerAttendance, removeAttendance } from "../services/EventServices";
+import { registerAttendance, removeAttendance } from "../services/EventServices";
 import EditForm from "../components/EditEventForm"
 
 export default function EventCard(props){
@@ -39,11 +39,14 @@ export default function EventCard(props){
         toast.success("attendance removed")
     }
 
-    const removeEvent = (userJWT, eventID) => {
-        deleteEvent(userJWT, eventID)
-        .then(data => console.log(data))
-        .catch(error => console.log(error))
-    }
+
+    // Errors!!! with current function and database set up
+    // Was not able to fix this problem before due date of this assignment
+    // const removeEvent = (userJWT, eventID) => {
+    //     deleteEvent(userJWT, eventID)
+    //     .then(data => console.log(data))
+    //     .catch(error => console.log(error))
+    // }
 
     const toggleEditMode = () => {
         setToggleEdit(!toggleEdit);
@@ -54,7 +57,7 @@ export default function EventCard(props){
         return(
             <div className="rounded-md bg-stone-700 shadow-md w-4/5">
                 <EditForm eventid={id}/>
-                <button onClick={() => {removeEvent(user, id)}}>Remove Event</button>
+                {/* <button onClick={() => {removeEvent(user, id)}}>Remove Event</button> */}
                 <button onClick={() => {toggleEditMode()}}>Cancel</button>
             </div>
         )
