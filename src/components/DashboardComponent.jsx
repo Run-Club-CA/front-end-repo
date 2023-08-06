@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { getUser } from "../services/UserServices";
 import React, { useState } from "react";
 import { getUserCompletedEvents } from "../services/EventServices";
+import { subDays } from "date-fns";
 
 // Renders with the user's name, logout and edit profile links
 export default function DashBoardComponent(props) {
@@ -29,6 +30,16 @@ export default function DashBoardComponent(props) {
     0
   );
 
+  const today = new Date();
+  const todayMinus30 = subDays(today, 30)
+  const filterByDate = arr => arr.filter(({ date }) => new Date(date) > todayMinus30);
+  let filteredRuns = filterByDate(userCompletedRuns);
+
+  let monthlyRun = filteredRuns.reduce(
+    (accum, item) => accum + item.distance,
+    0
+  );
+
   // useEffect hook to get user details and store them in local storage
   // Uses the supplied JWT that relates to the current user
   useEffect(() => {
@@ -48,11 +59,12 @@ export default function DashBoardComponent(props) {
     <div className="text-white bg-grey-div mx-auto my-10 w-mobile-width h-mobile-height p-4 rounded-main-div shadow-mobile-shadow">
       <h1>Welcome! {userDetails.firstName || "Testname"}</h1>
       <p>Total run:{totalRun}km </p>
+      <p>Monthly run:{monthlyRun}km </p>
       <a href="/dashboard/profile">Edit Profile</a>
       <a href="/">Home</a>
       {(isTrainer || isAdmin) && <a href="/dashboard/events">Create Event</a>}
       {isAdmin && <a href="/dashboard/admin/users">Users List</a>}
-      <button onClick={logoutUser}>Logout</button>
+      <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" onClick={logoutUser}>Logout</button>
     </div>
   );
 }
