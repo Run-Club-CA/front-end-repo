@@ -1,10 +1,14 @@
 import { toast } from "react-toastify";
+import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext"
 import { deleteEvent, registerAttendance, removeAttendance } from "../services/EventServices";
+import EditForm from "../components/EditEventForm"
 
 export default function EventCard(props){
     
     const {isTrainer, isAdmin, user} = useAuth();
+
+    const [toggleEdit, setToggleEdit] = useState(false); 
     
 
     let {
@@ -35,14 +39,25 @@ export default function EventCard(props){
         toast.success("attendance removed")
     }
 
-    const removeEvent = (userJWT, eventID) => {
-        deleteEvent(userJWT, eventID)
-        .then(data => console.log(data))
-        .catch(error => console.log(error))
+    // const removeEvent = (userJWT, eventID) => {
+    //     deleteEvent(userJWT, eventID)
+    //     .then(data => console.log(data))
+    //     .catch(error => console.log(error))
+    // }
+
+    const toggleEditMode = () => {
+        setToggleEdit(!toggleEdit);
     }
 
 
-    if(isTrainer === true || isAdmin === true){
+    if((isTrainer === true || isAdmin === true) && (toggleEdit === true)){
+        return(
+            <div className="rounded-md bg-stone-700 shadow-md w-4/5">
+                <EditForm />
+                <button onClick={() => {toggleEditMode()}}>Cancel</button>
+            </div>
+        )
+    } else if((isTrainer === true || isAdmin === true) && (toggleEdit === false)){
         return(
             <div className="rounded-md bg-stone-700 shadow-md w-4/5">
             <h1>Name: {name}</h1>
@@ -52,12 +67,12 @@ export default function EventCard(props){
             <p>Distance: {distance}</p>
             <p>Difficulty: {difficulty}</p>
             <p>Trainer: {trainer}</p>
-            <button onClick={() => {removeEvent(user, id)}}>Remove Event</button>
+            <button onClick={() => {toggleEditMode()}}>Edit Event</button>
             <button onClick={() => (handleAttending(user, id))}>Attend</button>
             <button onClick={() => (handleRemoveAttending(user, id))}>Remove Attendance</button>
         </div> 
         )
-    } else{
+    } else {
         return(
             <div className="rounded-md bg-stone-700 shadow-md w-4/5">
                 <h1>Name: {name}</h1>
