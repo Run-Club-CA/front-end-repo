@@ -80,6 +80,22 @@ export async function removeAttendance(userJWT, eventID){
     return json
 }
 
+// Function to update event details, sends userJWT and request body with update details to backend
+export async function updateEvent(userJWT, eventID, data){
+    const response = await fetch(`${api}/events/change-event/${eventID}`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Bearer ${userJWT}`,
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }).catch(error => console.log(error))
+
+    const json = await response.json();
+    console.log(json)
+    return json
+}
+
 
 // Function to remove event from database
 // Sends userJWT and eventID to the server

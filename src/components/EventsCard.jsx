@@ -53,7 +53,7 @@ export default function EventCard(props){
     if((isTrainer === true || isAdmin === true) && (toggleEdit === true)){
         return(
             <div className="rounded-md bg-stone-700 shadow-md w-4/5">
-                <EditForm />
+                <EditForm eventid={id}/>
                 <button onClick={() => {toggleEditMode()}}>Cancel</button>
             </div>
         )

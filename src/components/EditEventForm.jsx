@@ -1,24 +1,22 @@
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { addDays } from "date-fns";
 import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { getTrainers } from "../services/UserServices";
-import { set } from "js-cookie";
+import { updateEvent } from "../services/EventServices";
+
 
 
 export default function EditForm(props) {
-    // let {
-    //     name, location, distance, difficulty, 
-    //     trainer, id
-    // } = props
+    let id = props.eventid
+
     const {user} = useAuth();
 
     const [startDate, setStartDate] = useState(new Date());
-    const [name, setName] = useState("");
-    const [location, setLocation] = useState("");
-    const [distance, setDistance] = useState("");
-    const [difficulty, setDifficulty] = useState("");
+    const [name, setName] = useState(props.name);
+    const [location, setLocation] = useState(props.location);
+    const [distance, setDistance] = useState(props.distance);
+    const [difficulty, setDifficulty] = useState(props.difficulty);
     const [trainer, setTrainer] = useState("");
     const [trainers, setTrainers] = useState([]);
 
@@ -36,14 +34,24 @@ export default function EditForm(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(props)
+        let eventData = {
+            name: name,
+            date: startDate,
+            location: location,
+            distance: distance,
+            difficulty: difficulty,
+            trainer: trainer
+        }
+        updateEvent(user, id, eventData)
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
     }
 
     return(
         <div>
             <form name="edit-event" className="text-black" onSubmit={handleSubmit}>
                 <label className="text-white">Name: </label>
-                <input type="text" value={name} onChange={(e) => setName(e.target.ariaValueMin)} />
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
 
                 <label className="text-white">Date: </label>
                 <ReactDatePicker 
