@@ -62,6 +62,21 @@ export async function getUser(userJWT){
     return json;
 }
 
+// Get all trainers, returns response container trainers usernames
+export async function getTrainers(userJWT){
+    const response = await fetch(`${api}/users/allTrainers`, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${userJWT}`
+        }
+    }).catch(error => console.log(error))
+
+    const json = await response.json();
+    console.log(json);
+    return json
+}
+
+
 // Function to allow user to update user details from front-end component
 // to back-end route
 // Sends API request with authorization header and updated user details
