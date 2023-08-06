@@ -84,7 +84,7 @@ export default function UserForm(){
                 <label>Password</label>
                 <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} className="w-mobile-width p-1 rounded-mobile-form shadow-form-mobile text-black text-center"/>
 
-                <button type="submit">{buttonName}</button> 
+                <button type="submit" className="mx-2 mt-3 bg-green-500 hover:bg-green-700 text-white text-center font-bold py-1 px-2 rounded">{buttonName}</button> 
             </form>
         </div>
         

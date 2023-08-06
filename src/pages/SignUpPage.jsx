@@ -18,8 +18,8 @@ export default function SignUpPage(){
 
     return(
         <main>
-            <div>
-                {/* {Place logo/title card here} */}
+            <div className="flex justify-between items-center text-white bg-grey-div mx-auto my-10 w-mobile-width h-mobile-height p-4 rounded-main-div shadow-mobile-shadow">
+                <h1 className="text-3xl mx-auto font-mono">The Run Club</h1>
             </div>
             
 

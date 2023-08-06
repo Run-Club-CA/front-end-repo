@@ -12,12 +12,23 @@ export default function EventCard(props){
     
 
     let {
-        name, location, date, 
-        time, distance, difficulty, 
+        name, location, date, distance, difficulty, 
         trainer, id
     } = props
 
-    date = date.split("T")[0]
+    // let time = date.split("T")[1]
+    // time = time.split("Z")[0]
+    // time = time.toLocaleString()
+    // console.log(time)
+    // date = date.split("T")[0]
+    let dateString = new Date(date);
+    dateString = dateString.toLocaleDateString()
+    
+    let timeString = new Date(date)
+    timeString = timeString.toLocaleTimeString()
+    
+
+    
 
     const handleAttending = (userJWT, eventID) => {
         let event = {
@@ -55,39 +66,38 @@ export default function EventCard(props){
 
     if((isTrainer === true || isAdmin === true) && (toggleEdit === true)){
         return(
-            <div className="rounded-md bg-stone-700 shadow-md w-4/5">
+            <div className="flex flex-col justify-center gap-y-2 rounded-md bg-stone-700 shadow-md w-4/5 p-5 mx-auto hover:bg-stone-900">
                 <EditForm eventid={id}/>
                 {/* <button onClick={() => {removeEvent(user, id)}}>Remove Event</button> */}
-                <button onClick={() => {toggleEditMode()}}>Cancel</button>
+                <button onClick={() => {toggleEditMode()}} className="mx-auto bg-green-500 hover:bg-green-700 text-white text-center font-bold py-1 px-2 rounded">Cancel</button>
             </div>
         )
     } else if((isTrainer === true || isAdmin === true) && (toggleEdit === false)){
         return(
-            <div className="rounded-md bg-stone-700 shadow-md w-4/5">
+            <div className="flex flex-col justify-center items-center gap-y-2 rounded-md bg-stone-700 shadow-md w-4/5 p-5 mx-auto hover:bg-stone-900">
             <h1>Name: {name}</h1>
-            <p className="text-xs">{date}</p>
-            <p className="text-xs">{time}</p>
+            <p className="text-xs">{dateString}  {timeString}</p>
+            {/* <p className="text-xs">{time}</p> */}
             <p>Location: {location}</p>
             <p>Distance: {distance}</p>
             <p>Difficulty: {difficulty}</p>
             <p>Trainer: {trainer}</p>
-            <button onClick={() => {toggleEditMode()}}>Edit Event</button>
-            <button onClick={() => (handleAttending(user, id))}>Attend</button>
-            <button onClick={() => (handleRemoveAttending(user, id))}>Remove Attendance</button>
+            <button onClick={() => {toggleEditMode()}} className="mx-auto bg-green-500 hover:bg-green-700 text-white text-center font-bold py-1 px-2 rounded">Edit Event</button>
+            <button onClick={() => (handleAttending(user, id))} className="mx-auto bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-1 px-2 rounded">Attend</button>
+            <button onClick={() => (handleRemoveAttending(user, id))} className="mx-auto bg-red-500 hover:bg-red-700 text-white text-center font-bold py-1 px-2 rounded">Remove Attendance</button>
         </div> 
         )
     } else {
         return(
-            <div className="rounded-md bg-stone-700 shadow-md w-4/5">
+            <div className="flex flex-col justify-center gap-y-2 rounded-md bg-stone-700 shadow-md w-4/5 p-5 mx-auto hover:bg-stone-900">
                 <h1>Name: {name}</h1>
-                <p className="text-xs">{date}</p>
-                <p className="text-xs">{time}</p>
+                <p className="text-xs">{dateString}  {timeString}</p>
                 <p>Location: {location}</p>
                 <p>Distance: {distance}</p>
                 <p>Difficulty: {difficulty}</p>
                 <p>Trainer: {trainer}</p>
-                <button onClick={() => (handleAttending(user, id))}>Attend</button>
-            <button onClick={() => (handleRemoveAttending(user, id))}>Remove Attendance</button>
+                <button onClick={() => (handleAttending(user, id))}  className="mx-auto bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-1 px-2 rounded">Attend</button>
+                <button onClick={() => (handleRemoveAttending(user, id))} className="mx-auto bg-red-500 hover:bg-red-700 text-white text-center font-bold py-1 px-2 rounded">Remove Attendance</button>
             </div>
         )
     }

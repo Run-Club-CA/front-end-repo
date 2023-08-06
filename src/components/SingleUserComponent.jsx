@@ -7,11 +7,11 @@ export default function SingleUser(){
     // conditional render, changes layout of page if user is admin or not
     
     return(
-        <div className="text-white">
-            <p>{userDetails.firstName}</p>
-            <p>{userDetails.lastName}</p>
-            <p>{userDetails.email}</p>
-            <p>{userDetails.userName}</p>
+        <div className="flex flex-col text-white items-center">
+            <p>first Name: <strong>{userDetails.firstName}</strong></p>
+            <p>last Name: <strong>{userDetails.lastName}</strong></p>
+            <p>email: <strong>{userDetails.email}</strong></p>
+            <p>username: <strong>{userDetails.userName}</strong></p>
         </div>
     )
 }

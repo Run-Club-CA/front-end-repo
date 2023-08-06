@@ -39,10 +39,18 @@ export default class CreateEvent extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount() { 
+    let token = localStorage.getItem("user")
+    token = JSON.parse(token)
+
+    const config = {
+      headers : {
+        "Authorization" : `Bearer ${token}`
+      }
+    }
     axios
       //      .get("http://localhost:5000/users/allTrainers")
-      .get(`${api}/users/allTrainers`)
+      .get(`${api}/users/allTrainers`, config)
       .then((response) => {
         if (response.data.length > 0) {
           this.setState({
@@ -129,10 +137,10 @@ export default class CreateEvent extends Component {
       <div className="flex justify-center flex-col">
         <form
           onSubmit={this.onSubmit}
-          className="text-white bg-grey-div mx-auto my-10 w-mobile-width
+          className="flex flex-col gap-y-2 text-white bg-grey-div mx-auto my-10 w-mobile-width
          p-4 rounded-main-div shadow-mobile-shadow"
         >
-          <h3>Create New Event</h3>
+          <h3 className="font-bold text-center mb-2">Create New Event</h3>
           <div className="form-group ">
             <label>Name: </label>
             <input
@@ -211,7 +219,7 @@ export default class CreateEvent extends Component {
             <input
               type="submit"
               value="Create Event"
-              className="btn btn-primary"
+              className="mt-2 bg-green-500 hover:bg-green-700 text-white text-center font-bold py-1 px-2 rounded"
             />
           </div>
         </form>
