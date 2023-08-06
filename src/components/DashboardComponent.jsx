@@ -24,7 +24,7 @@ export default function DashBoardComponent(props) {
   //   </li>
   // ));
 
-  var totalRun = userCompletedRuns.reduce(
+  let totalRun = userCompletedRuns.reduce(
     (accum, item) => accum + item.distance,
     0
   );
@@ -49,7 +49,7 @@ export default function DashBoardComponent(props) {
       <h1>Welcome! {userDetails.firstName || "Testname"}</h1>
       <p>Total run:{totalRun}km </p>
       <a href="/dashboard/profile">Edit Profile</a>
-      <a href="/dashboard">Home</a>
+      <a href="/">Home</a>
       {(isTrainer || isAdmin) && <a href="/dashboard/events">Create Event</a>}
       {isAdmin && <a href="/dashboard/admin/users">Users List</a>}
       <button onClick={logoutUser}>Logout</button>
