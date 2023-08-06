@@ -20,6 +20,10 @@ export function DeleteButton(){
     }
 
     return(
-        <button onClick={deleteProfile}>Remove Account</button>
+        <div className="flex flex-col justify-center mt-3">
+            <p className="mx-auto"><strong>Warning this will remove the account</strong></p>
+            <button onClick={deleteProfile} className="mx-auto mt-2 bg-red-500 hover:bg-red-700 text-white text-center font-bold py-1 px-2 rounded">Remove Account</button>
+        </div>
+        
     )
 }

@@ -56,15 +56,18 @@ export default function DashBoardComponent(props) {
   };
 
   return (
-    <div className="text-white bg-grey-div mx-auto my-10 w-mobile-width h-mobile-height p-4 rounded-main-div shadow-mobile-shadow">
-      <h1>Welcome! {userDetails.firstName || "Testname"}</h1>
-      <p>Total run:{totalRun}km </p>
-      <p>Monthly run:{monthlyRun}km </p>
-      <a href="/dashboard/profile">Edit Profile</a>
-      <a href="/">Home</a>
-      {(isTrainer || isAdmin) && <a href="/dashboard/events">Create Event</a>}
-      {isAdmin && <a href="/dashboard/admin/users">Users List</a>}
-      <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" onClick={logoutUser}>Logout</button>
+    <div className=" flex flex-col text-white bg-grey-div mx-auto my-10 gap-y-1 w-mobile-width  p-4 rounded-main-div shadow-mobile-shadow">
+      <h1 className="mx-auto font-mono">Welcome! {userDetails.firstName || "Testname"}</h1>
+      <p className="mx-auto mb-2">Total run: <strong>{totalRun}km </strong>  Monthly run: <strong>{monthlyRun}km</strong></p>
+      <div className="mx-auto mb-2">
+        <a className="mx-auto bg-blue-500 hover:bg-blue-700 text-xs text-white text-center font-bold py-1 px-2 rounded" href="/">Home</a>
+        <a href="/dashboard/profile" className="mx-2 bg-green-500 hover:bg-green-700 text-xs text-white text-center font-bold py-1 px-2 rounded">Edit Profile</a>
+        <button className="mx-auto bg-red-500 hover:bg-red-700 text-xs text-white font-bold py-1 px-2 rounded" onClick={logoutUser}>Logout</button>
+      </div>
+      <div className="mx-auto">
+        {(isTrainer || isAdmin) && <a href="/dashboard/events" className=" bg-green-500 hover:bg-green-700 text-xs text-white text-center font-bold py-1 px-2 rounded">Create Event</a>}
+        {isAdmin && <a href="/dashboard/admin/users" className="mx-2 bg-green-500 hover:bg-green-700 text-xs text-white text-center font-bold py-1 px-2 rounded">Users List</a>}    
+      </div>
     </div>
   );
 }

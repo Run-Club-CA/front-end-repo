@@ -27,10 +27,11 @@ export default function CardContainer(){
     }
 
     return(
-        <div className="flex flex-col justify-between text-white items-center bg-grey-div mx-auto rounded-main-div shadow-mobile-shadow w-3/5 p-2 gap-y-2">
+        <div className="flex flex-col justify-between text-white items-center bg-grey-div mx-auto rounded-main-div shadow-mobile-shadow w-5/6 p-2 gap-y-2">
             <button onClick={() => {handleUpcomingEvents()}}>Upcoming Events</button>
             <button onClick={() => {handleAttendingEvents(user)}}>Attending Events</button>
             {eventsList.map(event => <EventCard 
+                key={event.id}
                 name={event.name} 
                 location={event.location}
                 date={event.date}

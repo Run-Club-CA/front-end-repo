@@ -16,11 +16,10 @@ export default function LoginPage(){
 
     return(
         <main className="flex justify-center flex-col">
-            
-            {/* {Place Logo/Title component here} */}
 
-            <article className="text-white bg-grey-div mx-auto my-10 w-mobile-width h-mobile-height p-4 rounded-main-div shadow-mobile-shadow">
-                <p>
+            <article className="text-white bg-grey-div mx-auto  my-10 w-mobile-width h-mobile-height p-4 rounded-main-div shadow-mobile-shadow">
+                <h1 className="font-bold text-lg text-center font-mono mb-2">The Run Club</h1>
+                <p className="text-center">
                     A Social running club in Waverly,
                     Come join us and enjoy running
                     at all skill levels!

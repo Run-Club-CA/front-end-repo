@@ -1,5 +1,6 @@
 
 import { createContext, useContext, useMemo } from "react";
+import { toast } from "react-toastify";
 
 import { useLocalStorage } from "react-use";
 
@@ -14,6 +15,9 @@ export const AuthProvider = ({children}) => {
     const [isTrainer, setIsTrainer] = useLocalStorage("isTrainer", false);
 
     const login = (data) => {
+        if(!data.token){
+            toast.error("Error occurred please try again")
+        }
         setUser(data.token);
         setIsTrainer(data.trainer);
         setIsAdmin(data.admin);
