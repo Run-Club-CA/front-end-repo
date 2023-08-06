@@ -45,6 +45,7 @@ export default function EditForm(props) {
         updateEvent(user, id, eventData)
         .then(data => console.log(data))
         .catch(error => console.log(error))
+        window.location.reload(false)
     }
 
     return(
