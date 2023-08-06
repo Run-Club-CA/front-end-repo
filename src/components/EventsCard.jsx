@@ -39,11 +39,11 @@ export default function EventCard(props){
         toast.success("attendance removed")
     }
 
-    // const removeEvent = (userJWT, eventID) => {
-    //     deleteEvent(userJWT, eventID)
-    //     .then(data => console.log(data))
-    //     .catch(error => console.log(error))
-    // }
+    const removeEvent = (userJWT, eventID) => {
+        deleteEvent(userJWT, eventID)
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+    }
 
     const toggleEditMode = () => {
         setToggleEdit(!toggleEdit);
@@ -54,6 +54,7 @@ export default function EventCard(props){
         return(
             <div className="rounded-md bg-stone-700 shadow-md w-4/5">
                 <EditForm eventid={id}/>
+                <button onClick={() => {removeEvent(user, id)}}>Remove Event</button>
                 <button onClick={() => {toggleEditMode()}}>Cancel</button>
             </div>
         )
