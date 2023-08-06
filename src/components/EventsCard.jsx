@@ -89,9 +89,9 @@ export default function EventCard(props){
         )
     } else {
         return(
-            <div className="flex flex-col justify-center gap-y-2 rounded-md bg-stone-700 shadow-md w-4/5 p-5 mx-auto hover:bg-stone-900">
+            <div className="flex flex-col justify-center items-center gap-y-2 rounded-md bg-stone-700 shadow-md w-4/5 lg:w-2/5 p-5 mx-auto hover:bg-stone-900">
                 <h1>Name: {name}</h1>
-                <p className="text-xs">{dateString}  {timeString}</p>
+                <p className="text-sm">{dateString}  {timeString}</p>
                 <p>Location: {location}</p>
                 <p>Distance: {distance}</p>
                 <p>Difficulty: {difficulty}</p>
